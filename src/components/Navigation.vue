@@ -12,7 +12,7 @@
             </div>
             <div class="wrapper">
                 <PrimaryButton class="button">Sign Up</PrimaryButton>
-                <div @click="isOpen = !isOpen" class="hamburger">
+                <div @click="menuOpen" class="hamburger">
                     <img class='hamburger-icon' src='../assets/hamburger-icon.svg' />
                 </div>
            </div>
@@ -28,11 +28,14 @@ export default {
     components: {
         PrimaryButton,
     },
-    data: () => {
-        return {
-            isOpen: false,
-        }
+    props: {
+        isOpen: Boolean,
     },
+    methods: {
+        menuOpen () {
+            this.$emit('menuState');
+        }
+    }
 }
 </script>
 

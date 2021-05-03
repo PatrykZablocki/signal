@@ -1,10 +1,12 @@
 <template>
-  <Navigation />
-  <HeaderSection :mobileView="mobileView" />
-  <StatsSection />
-  <NewsletterSection />
-  <WbtSection />
-  <Footer />
+  <Navigation :isOpen="isOpen" v-on:menuState="menuState" />
+  <div ref='page'>
+    <HeaderSection :mobileView="mobileView" />
+    <StatsSection />
+    <NewsletterSection />
+    <WbtSection />
+    <Footer />
+  </div>
 </template>
 
 <script>
@@ -28,12 +30,21 @@ export default {
   data: () => {
     return {
         mobileView: Boolean,
+        isOpen: false,
     };
   },
   methods: {
     handleView() {
         this.mobileView = window.innerWidth < 768 ;
-    }
+    },
+    menuState() {
+      this.isOpen = !this.isOpen;
+      if(this.isOpen) {
+        this.$refs.page.addEventListener('click', () => {
+          this.isOpen = false;
+        });
+      }
+    },
   },
   created() {
     this.handleView();
