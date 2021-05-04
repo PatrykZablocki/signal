@@ -164,4 +164,50 @@ export default {
     }
 }
 
+
+//focus
+.nav-item:focus-visible {
+    outline-style: double;
+    outline-offset: -5px;
+}
+
+
+//animations
+@media screen and (max-width: 767.98px) {
+.nav-items {
+     transition: transform .3s ease-out;
+
+    .nav-item {
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity .3s .25s ease-out, transform .3s .2s ease-out;
+    }
+
+    &--open .nav-item {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+}
+
+//hover
+.nav-item {
+    position: relative;
+
+    &::before {
+        content: '';
+        width: 80%;
+        height: 2px;
+        position: absolute;
+        background: $color-dark-background;
+        left: 10%;
+        bottom: 5px;
+        opacity: 0;
+        transition: opacity 0.1s ease-in-out;
+    }
+
+    &:hover::before {
+        opacity: 1;
+    }
+}
 </style>
