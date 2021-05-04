@@ -142,4 +142,14 @@ input {
 
     margin-left: 8px;
 }
+
+//focus
+input{
+    outline: none;
+
+    &:focus {
+        border-width: 2px;
+        border-color:  $color-dark-background;
+    }
+}
 </style>
